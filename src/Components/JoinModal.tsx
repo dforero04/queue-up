@@ -4,34 +4,41 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
+  Typography,
 } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
+import "../styles.css";
 import * as React from "react";
 
 interface JoinModalProps {
   open: boolean;
-  // closeModal:
+  closeModal: any;
 }
 
-const JoinModal = ({ open }: JoinModalProps) => {
+const JoinModal = ({ open, closeModal }: JoinModalProps) => {
   return (
-    <div>
-      <Dialog open={open}>
-        <DialogTitle>Enter Room Code</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            id="room-code"
-            placeholder="Enter Room Code"
-          ></TextField>
-        </DialogContent>
-        <DialogActions>
-          <Button
-          // onClick={closeModal}
-          ></Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <Dialog
+      open={open}
+      // onClose={(closeModal, "backdropClick")}
+    >
+      <DialogTitle>Enter Room Code</DialogTitle>
+      <DialogContent>
+        <TextField
+          autoFocus
+          id="room-code"
+          placeholder="Enter Room Code"
+        ></TextField>
+      </DialogContent>
+      <DialogActions>
+        <Button variant="outlined" onClick={closeModal}>
+          Cancel
+        </Button>
+        <Button variant="contained" onClick={closeModal}>
+          Join
+        </Button>
+      </DialogActions>
+      <Typography variant="caption">Start a room here!</Typography>
+    </Dialog>
   );
 };
 
